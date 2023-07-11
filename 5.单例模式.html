@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 保证一个类只有一个实例
+        // 主要解决一个全局使用的类频繁的创建和销毁 vuex store是单例
+        class Singleton {
+            constructor(name, age) {
+                if (!Singleton.instance) {
+                    this.name = name;
+                    this.age = age;
+                    Singleton.instance = this
+                }
+                return Singleton.instance
+                // 永远是第一个实例，不管创建多少
+            }
+        }
+        console.log(new Singleton("kerwin", 100) === new Singleton("xiaowang", 18))
+
+
+    </script>
+</body>
+
+</html>

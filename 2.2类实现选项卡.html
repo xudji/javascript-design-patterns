@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container1">
+        <ul class="header">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+        <ul class="box">
+            <li class="active">001</li>
+            <li>002</li>
+            <li>003</li>
+            <li>004</li>
+            <li>005</li>
+            <li>006</li>
+        </ul>
+    </div>
+    <script>
+        function Tabs(selector) {
+            this.selector = document.querySelector(selector)
+            this.headersItems = this.selector.querySelectorAll(".header li")
+            this.boxItems = this.selector.querySelectorAll(".box li")
+            console.log(this.headersItems, this.boxItems)
+            this.type = type
+            this.change()
+        }
+        Tabs.prototype.change = function () {
+            for (let i = 0; i < this.headersItems.length; i++) {
+                this.headersItems[i].addEventListener(this.type, () => {
+                    // 移除所有active
+                    for (let m = 0; m < this.headersItems.length; m++) {
+                        this.headersItems[m].classList.remove("active")
+                        this.boxItems[m].classList.remove("active")
+                    }
+                    this.headersItems[i].classList.add("active")
+                    this.boxItems[i].classList.remove('active')
+                }, false)
+            }
+        }
+        new Tabs('.container1')
+    </script>
+    <style>
+        .container1,
+        .container2 {
+            position: relative;
+            width: 500px;
+            height: 200px;
+            background-color: green;
+        }
+
+        .ul,
+        li {
+            list-style: none;
+        }
+
+        .header li {
+            float: left;
+            margin-right: 0;
+            list-style: none;
+            width: 66px;
+            height: 60px;
+            background-color: #fff;
+            border: 1px solid black;
+
+        }
+
+        .header .active {
+            background-color: red;
+        }
+
+        .box li {
+            position: absolute;
+            bottom: 0;
+            border: 1px solid black;
+            width: 400px;
+            height: 140px;
+            background-color: aquamarine;
+        }
+
+        .box .active {
+            display: block;
+        }
+    </style>
+</body>
+
+</html>

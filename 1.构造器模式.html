@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 构造器模式缺点，say()方法都一样，但是每次会在内存中开辟空间存，不存栈堆（栈堆存变量和对象）
+        // 只能承载一个人
+        var employee1 = {
+            name: 'kerwin',
+            age: 18
+        }
+        var employee2 = {
+            name: 'jack',
+            age: 20
+        }
+
+        // 定义构造函数
+        function Employee(name, age) {
+            this.name = name;
+            this.age = age;
+            this.say = function () {
+                console.log(`${this.name} + ${this.age}`)
+            }
+        }
+        // this 指向 实例 employee3
+        var employee3 = new Employee("kiki", 23)
+        var employee4 = new Employee('sunny', 26)
+        console.log(employee3)
+        console.log(employee4)
+        employee3.say()
+        employee4.say()
+    </script>
+</body>
+
+</html>

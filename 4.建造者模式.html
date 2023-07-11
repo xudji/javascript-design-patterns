@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 关注细节 关注过程
+        class Navbar {
+            init() {
+                console.log('navbar-init')
+            }
+            getData() {
+                console.log("navbar-getData")
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve("list-1111")
+                        console.log('list-1111')
+                    }, 1000)
+                })
+            }
+            render() {
+                console.log('navbar-render')
+            }
+        }
+
+        class Creator {
+            async startBuild(builder) {
+                await builder.init()
+                await builder.getData()
+                await builder.render()
+            }
+        }
+        const op = new Creator()
+        op.startBuild(new Navbar())
+
+    </script>
+</body>
+
+</html>

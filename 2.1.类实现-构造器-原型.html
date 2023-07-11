@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // class 类 兼顾 构造函数 和 原型
+        class Employee {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            // say 在 原型上
+            say() {
+                console.log(this.name + '-' + this.age)
+            }
+        }
+        var employee1 = new Employee('kerwin', 24);
+        console.log(employee1)
+        employee1.say()
+
+    </script>
+</body>
+
+</html>
